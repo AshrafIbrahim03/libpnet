@@ -1,5 +1,7 @@
 use alloc::string::String;
 use alloc::vec::Vec;
+#[cfg(feature = "arbitrary")]
+use arbitrary::Arbitrary;
 use core::{fmt, str};
 use pnet_macros::packet;
 use pnet_macros_support::packet::{Packet, PacketSize, PrimitiveValues};
@@ -264,6 +266,7 @@ impl fmt::Display for DnsType {
 }
 
 #[packet]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub struct Dns {
     pub id: u16be,
     pub is_response: u1,
@@ -343,6 +346,7 @@ fn additional_length(packet: &DnsPacket) -> usize {
 }
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub enum Opcode {
     StandardQuery,
     InverseQuery,
@@ -375,6 +379,7 @@ impl Opcode {
 }
 
 #[derive(Clone, Copy, Debug, Eq, Hash, PartialEq)]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub enum Retcode {
     NoError,
     FormatError,
@@ -413,6 +418,7 @@ impl Retcode {
 }
 
 #[packet]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub struct DnsQuery {
     #[length_fn = "qname_length"]
     pub qname: Vec<u8>,
@@ -453,6 +459,7 @@ impl DnsQuery {
 }
 
 #[packet]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub struct DnsResponse {
     pub name_tag: u16be,
     #[construct_with(u16be)]
