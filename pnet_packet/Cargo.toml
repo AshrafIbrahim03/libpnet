@@ -20,7 +20,7 @@ arbitrary = { version = "1.5.0", features = ["derive"], optional = true }
 [features]
 std = ["pnet_base/std"]
 default = ["std"]
-arbitrary = ["dep:arbitrary"]
+arbitrary = ["dep:arbitrary", "pnet_base/arbitrary"]
 
 [dev-dependencies]
 hex = "0.4.3"
