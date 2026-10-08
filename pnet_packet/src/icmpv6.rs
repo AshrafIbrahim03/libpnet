@@ -183,6 +183,7 @@ pub mod ndp {
 
     /// Represents a Neighbor Discovery Option Type.
     #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+    #[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
     pub struct NdpOptionType(pub u8);
 
     impl NdpOptionType {

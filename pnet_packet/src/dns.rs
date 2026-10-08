@@ -19,6 +19,7 @@ pub mod DnsClasses {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub struct DnsClass(pub u16);
 
 impl DnsClass {
@@ -148,6 +149,7 @@ pub mod DnsTypes {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
+#[cfg_attr(feature = "arbitrary", derive(Arbitrary))]
 pub struct DnsType(pub u16);
 
 impl DnsType {
