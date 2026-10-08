@@ -14,7 +14,7 @@
 
 extern crate alloc;
 
-#[cfg(test)]
+#[cfg(any(test, feature = "arbitrary"))]
 extern crate std;
 
 extern crate pnet_base;
